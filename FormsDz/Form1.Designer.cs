@@ -45,6 +45,7 @@ namespace FormsDz
             // 
             // ReductButt
             // 
+            this.ReductButt.Enabled = false;
             this.ReductButt.Location = new System.Drawing.Point(349, 258);
             this.ReductButt.Name = "ReductButt";
             this.ReductButt.Size = new System.Drawing.Size(164, 32);
@@ -72,7 +73,7 @@ namespace FormsDz
             this.Controls.Add(this.ReductButt);
             this.Controls.Add(this.textBox);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "цвф";
             this.ResumeLayout(false);
             this.PerformLayout();
 

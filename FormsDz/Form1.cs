@@ -14,15 +14,25 @@ namespace FormsDz
     public partial class Form1 : Form
     {
 
-        public bool IsDownload = false;
+       
         public Form1()
         {
             InitializeComponent();
+            ReductButt.Enabled = false;
+
+            
         }
 
         private void DownloadButt_Click(object sender, EventArgs e)
         {
-            FileStream file = new FileStream("DownloadText.txt", FileMode.OpenOrCreate);
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            
+            string filename = openFileDialog1.FileName;
+            
+           FileStream file = new FileStream(filename, FileMode.OpenOrCreate);
             StreamReader sr = new StreamReader(file);
 
             int sr_lenght = (int)file.Length;
@@ -35,13 +45,12 @@ namespace FormsDz
             }
             sr.Close();
             textBox.Text = dopStr;
-            IsDownload = true;
+            ReductButt.Enabled = true;
         }
 
         private void ReductButt_Click(object sender, EventArgs e)
         {
-            if(IsDownload == true)
-            {
+          
                 Form2 DopForm = new Form2();
                 if(DopForm.ShowDialog(textBox.Text) == DialogResult.OK)
                 {
@@ -49,7 +58,7 @@ namespace FormsDz
                     textBox.Text = DopForm.TText;
                 }
                 DopForm.Close();
-            }
+            
 
 
         }
